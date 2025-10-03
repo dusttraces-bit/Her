@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>From TUBELIGHT <3</title>
+    <title>Our Next Chapter</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -12,14 +12,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
     
     <style>
-        html, body {
-            height: 100%;
-        }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0d1117;
             color: #e6edf3;
-            overflow: hidden; /* Prevents scrollbars on the main page */
         }
         
         .hero-gradient {
@@ -46,7 +42,6 @@
             100% { transform: translateY(0px); }
         }
         
-        /* Custom styles for the letter modal scrollbar */
         .letter-modal-content::-webkit-scrollbar {
             width: 8px;
         }
@@ -54,12 +49,11 @@
             background: #161b22;
         }
         .letter-modal-content::-webkit-scrollbar-thumb {
-            background-color: #3b82f6; /* A nice blue for the scrollbar */
+            background-color: #3b82f6;
             border-radius: 4px;
             border: 2px solid #161b22;
         }
 
-        /* Styles to apply the custom fonts inside the modal */
         .letter-modal-content p {
             font-family: 'Lora', serif;
             font-style: italic;
@@ -70,9 +64,9 @@
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased **flex flex-col min-h-screen**">
 
-    <div class="relative min-h-screen w-full flex items-center justify-center p-4 hero-gradient overflow-hidden">
+    <main class="relative **flex-grow** w-full flex items-center justify-center p-4 hero-gradient overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full opacity-20">
             <div class="absolute top-1/4 left-1/4 w-16 h-16 text-teal-400 floating">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" /></svg>
@@ -94,12 +88,11 @@
                 </button>
             </div>
         </div>
-        
-        <footer class="absolute bottom-4 text-xs text-slate-600">
-            Built with love by Sujal
-        </footer>
-    </div>
-
+    </main>
+    
+    <footer class="w-full text-center **py-4** bg-slate-900/50">
+        <p class="text-xs text-slate-600">Built with love by Sujal</p>
+    </footer>
 
     <div id="letterModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
         <div class="w-full max-w-3xl bg-slate-800 border border-slate-700 rounded-xl relative transform transition-all opacity-0 -translate-y-4" id="modalContent">
@@ -132,7 +125,6 @@
         openBtn.addEventListener('click', () => {
             modal.classList.remove('hidden');
             modal.classList.add('flex');
-            // A tiny delay to allow the 'display: flex' to apply before starting the transition
             setTimeout(() => {
                 modalContent.classList.remove('opacity-0', '-translate-y-4');
             }, 10);
@@ -140,15 +132,13 @@
 
         const closeModal = () => {
             modalContent.classList.add('opacity-0', '-translate-y-4');
-            // Wait for the transition to finish before hiding the modal
             setTimeout(() => {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
-            }, 300); // This duration should match the transition duration in CSS if specified
+            }, 300);
         };
 
         closeBtn.addEventListener('click', closeModal);
-        // Also close if the backdrop is clicked
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 closeModal();
@@ -156,5 +146,4 @@
         });
     </script>
 </body>
-
 </html>
